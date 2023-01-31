@@ -5,18 +5,74 @@
 //
 // If the potential member is not in the array, return the array unchanged.
 // If the potential member is in the array, remove all instances of it from the array.
+remove(["mom", "dad", "son"], "dad");
+function remove(array, remove) {
+  let copy = array.slice();
 
+  let ind = copy.indexOf(remove);
+
+  if (ind === -1) {
+    return copy;
+  }
+  while (ind !== -1) {
+    copy.splice(ind, 1);
+    ind = copy.indexOf(remove);
+  }
+
+  return copy;
+}
 // 2. Revisit your "remove" function. Make sure that it does not change the original
 // array but instead returns a new array.
 
 // 3. Create a function called "sum" that takes an array of numbers and
 // returns the sum of those numbers.
+let coolSum = sum([5, 7, 2, 3, 4, 5, 6, 7, 8, 9]);
+let coolMin = minimum([5, 7, 2, 3, 4, 5, 6, 7, 8, 9]);
+function sum(array) {
+  let arrayCopy = array.slice();
+  let sum = 0;
+  if (arrayCopy.length > 0) {
+    sum = arrayCopy.reduce((accum, current) => accum + current);
+  }
 
+  return sum;
+}
 // 4. Create a function called "average" that takes an array of numbers
 // and returns the average of those numbers.
+function average(array) {
+  let avg;
+
+  if (array.length > 0) {
+    avg = sum(array) / array.length;
+  }
+
+  return avg;
+}
 
 // 5. Create a function called "minimum" that takes an array of numbers and
 // returns the smallest number in that array.
+
+function minimum(array) {
+  let min,
+    arrayCopy = array.slice();
+  if (arrayCopy.length > 0) {
+    //   min = arrayCopy.reduce((was, is) => {
+    //     if (is < was) {
+    //       return is;
+    //     } else {
+    //       return was;
+    //     }
+    //   });
+    // }
+    min = arrayCopy[0];
+    for (let num of arrayCopy) {
+      if (num < min) {
+        min = num;
+      }
+    }
+    return min;
+  }
+}
 
 // 6. There are many techniques to sort arrays in programming. Your programming
 // language will likely include the ability to do this. We are going to
