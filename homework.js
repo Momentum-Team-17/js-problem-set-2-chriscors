@@ -26,11 +26,16 @@ function remove(array, remove) {
 
 // 3. Create a function called "sum" that takes an array of numbers and
 // returns the sum of those numbers.
-let coolSum = sum([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+let coolSum = sum([5, 7, 2, 3, 4, 5, 6, 7, 8, 9]);
+let coolMin = minimum([5, 7, 2, 3, 4, 5, 6, 7, 8, 9]);
 function sum(array) {
-  let arrayCopy = array;
+  let arrayCopy = array.slice();
   let sum = 0;
-  sum = arrayCopy.reduce((accum, current) => accum + current);
+  if (arrayCopy.length > 0) {
+    sum = arrayCopy.reduce((accum, current) => accum + current);
+  }
+
+  return sum;
 }
 // 4. Create a function called "average" that takes an array of numbers
 // and returns the average of those numbers.
@@ -46,6 +51,28 @@ function average(array) {
 
 // 5. Create a function called "minimum" that takes an array of numbers and
 // returns the smallest number in that array.
+
+function minimum(array) {
+  let min,
+    arrayCopy = array.slice();
+  if (arrayCopy.length > 0) {
+    //   min = arrayCopy.reduce((was, is) => {
+    //     if (is < was) {
+    //       return is;
+    //     } else {
+    //       return was;
+    //     }
+    //   });
+    // }
+    min = arrayCopy[0];
+    for (let num of arrayCopy) {
+      if (num < min) {
+        min = num;
+      }
+    }
+    return min;
+  }
+}
 
 // 6. There are many techniques to sort arrays in programming. Your programming
 // language will likely include the ability to do this. We are going to
